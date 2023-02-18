@@ -1,40 +1,30 @@
 #include "Cola.h"
 #define ANGULO 45
 
-//Cola::Cola() {}
+void Cola::DibujarCola(float p, int n, float x, float y, float z) {
+	glRotatef(0,0,0,0);
+	glPushMatrix();
+		glTranslatef(x, y, z);
+		glPushMatrix();
+		glTranslatef(-0.25, 0.0, 0.0);
+		glRotatef(p, 0.0, 0.0, 1.0);
+		glTranslatef(1.0, 0.0, 0.0);
+		glPushMatrix();
+		glScalef(2.0, 0.4, 1.0);
+		glutWireCube(1.0);
+		glPopMatrix();
 
-void Cola::DibujarCola(float x, float y, float z, float tamanio, float rotacion, float rx, float ry, float rz, int n) {
+		for (int i = 0; i < n; i++) {
 
-    glPushMatrix();
-    glTranslatef(x, y, z);
-    glRotatef(rotacion, rx, ry, rz);
-    //glutSolidCube(tamanio);
+			glTranslatef(0.25, 0.0, 0.0);
+			glRotatef(p, 0.0, 0.0, 1.0);
+			glTranslatef(0.25, 0.0, 0.0);
+			glPushMatrix();
+			glScalef(0.5, 0.4, 1.0);
+			glutWireCube(1.0);
+			glPopMatrix();
+		}
 
-    // Reutilizado 
-
-    glPushMatrix();
-    glTranslatef(-0.25, 0.0, 0.0);
-    glRotatef(rotacion, 0.0, 0.0, 1.0);
-    glTranslatef(0.25, 0.0, 0.0);
-
-    glPushMatrix();
-    glScalef(0.5, 0.4, 1.0);
-    glutSolidCube(tamanio);
-    glPopMatrix();
-
-    for (int i = 0; i < n; i++) {
-
-        glTranslatef(0.25, 0.0, 0.0);
-        glRotatef(15, 0, 0, 1);
-        glTranslatef(0.25, 0.0, 0.0);
-        glPushMatrix();
-        glScalef(0.5, 0.4, 1.0);
-        glutSolidCube(tamanio);
-        glPopMatrix();
-
-    }
-
-    glPopMatrix();
-
-    glPopMatrix();
+		glPopMatrix();
+	glPopMatrix();
 }

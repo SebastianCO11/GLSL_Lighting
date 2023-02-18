@@ -11,6 +11,7 @@
 #include "Triangulo.h"
 #include "Cubo.h"
 #include "Tetera.h"
+#include "Cola.h"
 #include <time.h>
 
 //-----------------------------------------------------------------------------
@@ -28,6 +29,7 @@ protected:
    Triangulo* miTriangulo;
    Cubo* miCubo;
    Tetera* miTetera;
+   Cola* miCola;
 
 public:
 	myWindow(){}
@@ -41,6 +43,7 @@ public:
       miTriangulo = new Triangulo();
       miCubo = new Cubo();
       miTetera = new Tetera();
+      miCola = new Cola();
       glPushMatrix();
 
       //Aqui es donde dibujo con ayuda de la GPU
@@ -50,23 +53,42 @@ public:
          
          //Rotacion global
          //glRotatef(timer010*360, 0.5, 1.0f, 0.1f);
+         glRotatef(0, -0.15, 1.0f, 3.0f);
 
          //Traslacion global
-         glTranslatef(0, 0, -9);
+         glTranslatef(-10, -5, -30);
          
          //glPushMatrix();
-         //glScalef(2, 2, 2);
-         //glRotatef(45, 0, 0, 1);
-         //glutWireTeapot(0.5);
+         //glScalef(5, 5, 5);
+         //glTranslatef(15, 10, 0);
+         //glRotatef(45, 10, 0, 1);
+         //glutSolidTorus(10, 10, 10, 1);
          //glPopMatrix();
 
 
-         miTriangulo->DibujarTriangulos(0,3,0);
-         miTetera->DibujarTetera(0, -3, 0);
-         miTetera->DibujarTetera(3, 0, 0);
-         miTetera->DibujarTetera(-3, 0, 0);
-         miCubo->DibujarCubo(3, 3, 0, 45);
-         miCubo->DibujarCubo(-3, 3, 0, 30);
+         //miTriangulo->DibujarTriangulos(0,3,0);
+         //miTetera->DibujarTetera(0, -3, 0);
+         //miTetera->DibujarTetera(3, 0, 0);
+         //miTetera->DibujarTetera(-3, 0, 0);
+         //miCubo->DibujarCubo(3, 3, 0, 45);
+         //miCubo->DibujarCubo(-3, 3, 0, 30);
+         miCola->DibujarCola(0, 0, 0, 5, 90, 15, 0, 0, 25);
+         miCola->DibujarCola(0, 3, 0, 5, 90, 15, 0, 0, 25);
+         miCola->DibujarCola(0, 6, 0, 5, 90, 15, 0, 0, 25);
+         miCola->DibujarCola(0, 6, 0, 1, 0, 15, 0, 0, 5);
+         miCola->DibujarCola(2, 7.5, 0, 1, 0, 15, 0, 0, 5);
+         miCola->DibujarCola(4, 9, 0, 1, 15, 15, 0, 0, 15);
+
+         //Detalles de la cola a los lados
+         miCola->DibujarCola(0, 6, 0, 1, 20, 15, 0, 0, 5);
+         miCola->DibujarCola(2, 7.5, 0, 1, 20, 15, 0, 0, 5);
+         miCola->DibujarCola(0, 6, 0, 1, 5, 15, 0, 0, 5);
+         miCola->DibujarCola(2, 7.5, 0, 1, 5, 15, 0, 0, 5);
+         miCola->DibujarCola(0, 6, 0, 1, 5, -15, 0, 0, 5);
+         miCola->DibujarCola(2, 7.5, 0, 1, 5, -15, 0, 0, 5);
+         miCola->DibujarCola(0, 6, 0, 1, 5, -20, 0, 0, 5);
+         miCola->DibujarCola(2, 7.5, 0, 1, 5, -20, 0, 0, 5);
+         //float x, float y, float z, float tamanio, float rotacion, float rx, float ry, float rz, int n)
 
 
          //Big pop
